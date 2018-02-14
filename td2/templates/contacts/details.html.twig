@@ -1,0 +1,16 @@
+<h1 style="text-align:center">
+    
+    {% set contact = session.get(index)%}
+    {{contact.getPrenom}} {{contact.getNom}}
+</h1>
+<p>
+    <br/>Mail : {{contact.getEmail}}
+    <br/>Téléphone fixe : {{contact.getTel}}
+    <br/>Mobile : {{contact.getMobile}}
+</p>
+<a href="/contact">Retour à la liste des contacts</a>    <a href="/contact/edit/{{index}}">Modifier le contact</a>
+
+<form name="suppr" method="post" action="/contact/delete">
+    <input type="hidden" name="id" id="id" value="{{index}}"></input>
+    <input type="submit" name="suppression" value="Supprimer">
+</form>

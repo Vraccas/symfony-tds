@@ -1,0 +1,16 @@
+<h1>Liste des contacts</h1>
+
+<h2>Coordonnées des contacts</h2>
+<ul>
+    {#{% for comp in user.getCompetences %}
+        <li>{{comp}}</li>
+    {% endfor %}#}
+    
+    {% set a=0 %}
+    {% for contact in contactManager.getAll %}
+        {% set chemin="/contact/display/" ~ a %}
+        <li>{{contact.getPrenom}} {{contact.getNom}}   <a href={{chemin}}>Voir</a></li>
+        {% set a=a+1 %}
+    {% endfor %}
+</ul>
+<a href="/contact/new">Ajouter un contact</a>
