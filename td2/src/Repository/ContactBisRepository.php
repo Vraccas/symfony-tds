@@ -2,17 +2,17 @@
 
 namespace App\Repository;
 
-use App\Entity\Contact;
+use App\Entity\ContactBis;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use App\Service\IModelManager;
 use Doctrine\DBAL\DriverManager;
 
-class ContactRepository extends ServiceEntityRepository implements IModelManager
+class ContactBisRepository extends ServiceEntityRepository implements IModelManager
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Contact::class);
+        parent::__construct($registry, ContactBis::class);
     }
 
     public function delete($indexes) {
