@@ -2,6 +2,7 @@
 
 namespace App\Service;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use App\Repository\ContactBisRepository;
 
 /**
  * Description of ContactSessionManager
@@ -18,13 +19,14 @@ class ContactSessionManager implements IModelManager{ //On utilise la session po
     
     public function __construct(SessionInterface $session){
         $this->session=$session;
+        //$this->session->set("interfaceBDD", new ContactBisRepository($registry));
     }
     
     public function updateSession($values){
         $this->session->set("contacts", $values);
     }
     
-    public function count() {
+    public function compter() {
         return $this->session->get("contacts")->size();
     }
 
@@ -54,10 +56,11 @@ class ContactSessionManager implements IModelManager{ //On utilise la session po
         return $this->session->get("contacts");
     }
 
-    public function insert($objet) {
+    public function insertion($objet) {
         $contacts = $this->getAll();
         $contacts[] = $objet;
         $this->updateSession($contacts);
+        //$this->session->get("interfaceBDD")->insert($object);
     }
 
     public function select($indexes) {

@@ -15,11 +15,11 @@ namespace App\Service;
 interface IModelManager {
    
     public function getAll();
-    public function insert($objet);
+    public function insertion($objet);
     public function update($object, $values);
     public function delete($indexes);
     public function get($index);
     public function filterBy($keysAndValues);
-    public function count();
+    public function compter();
     public function select($indexes);
 }

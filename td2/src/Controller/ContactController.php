@@ -6,11 +6,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use App\Service\ContactSessionManager;
-use App\Model\Contact;
+use App\Entity\Contact;
+use App\Entity\ContactBis;
+use App\Repository\ContactBisRepository;
+use App\Repository\ContactRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 
 
 class ContactController extends Controller
@@ -18,7 +22,7 @@ class ContactController extends Controller
     /**
      * @Route("/contact", name="contact")
      */
-    public function index(ContactSessionManager $sessionManager)
+    public function index(ContactSessionManager $sessionManager, ContactRepository $repo)
     {
         // replace this line with your own code!
         //return $this->render('@Maker/demoPage.html.twig', [ 'path' => str_replace($this->getParameter('kernel.project_dir').'/', '', __FILE__) ]);
@@ -27,6 +31,11 @@ class ContactController extends Controller
         //return new Response('Ah!');
         //$sessionManager->insert(new Contact('MALINO', 'Colino', 'apero@override.com', '000000', '111111'));
         //$sessionManager->updateSession(null);
+        
+        $test = new Contact("Ah", "B");
+        //$contactRepo = new ContactRepository($registry);
+        $repo->insertion($test);
+        //$sessionManager->insert($test);
         return $this->render('contacts/base.html.twig', ["contactManager" => $sessionManager]);
         
     }
@@ -54,7 +63,7 @@ class ContactController extends Controller
             // but, the original `$task` variable has also been updated
             $contact = $form->getData();
 
-            $sessionManager->insert($contact);
+            $sessionManager->insertion($contact);
 
             //return $this->render('contacts/base.html.twig', ['contactManager'=>$sessionManager]);
             return $this->redirectToRoute('contact', ['contactManager'=>$sessionManager]);
