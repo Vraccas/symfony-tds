@@ -88,6 +88,10 @@ class Contact
     public function setMobile($mobile) {
         $this->mobile = $mobile;
     }
+    
+    public function getId(){
+        return $this->id;
+    }
 
     public function equals($contact){
         if($contact==$this){

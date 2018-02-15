@@ -32,10 +32,6 @@ class ContactController extends Controller
         //$sessionManager->insert(new Contact('MALINO', 'Colino', 'apero@override.com', '000000', '111111'));
         //$sessionManager->updateSession(null);
         
-        $test = new Contact("Ah", "B");
-        //$contactRepo = new ContactRepository($registry);
-        $repo->insertion($test);
-        //$sessionManager->insert($test);
         return $this->render('contacts/base.html.twig', ["contactManager" => $sessionManager]);
         
     }
@@ -43,7 +39,7 @@ class ContactController extends Controller
     /**
      * @Route ("/contact/new", name="new_contact")
      */
-    public function actionNew(ContactSessionManager $sessionManager, Request $request){
+    public function actionNew(ContactSessionManager $sessionManager, Request $request, ContactRepository $repo){
         
         $contact = new Contact('a', 'b');
         
@@ -64,6 +60,7 @@ class ContactController extends Controller
             $contact = $form->getData();
 
             $sessionManager->insertion($contact);
+            $repo->insertion($contact);
 
             //return $this->render('contacts/base.html.twig', ['contactManager'=>$sessionManager]);
             return $this->redirectToRoute('contact', ['contactManager'=>$sessionManager]);
@@ -75,7 +72,7 @@ class ContactController extends Controller
     /**
      * @Route ("/contact/edit/{index}", name="edit_contact")
      */
-    public function actionEdit(ContactSessionManager $sessionManager, Request $request, $index){
+    public function actionEdit(ContactSessionManager $sessionManager, Request $request, $index, ContactRepository $repo){
         
         $contact = $sessionManager->get($index);
         $form = $this->createFormBuilder($contact)
@@ -103,7 +100,8 @@ class ContactController extends Controller
                 'mobile' => $contactModif->getMobile(),                
             ];
             //$sessionManager->insert($contactModif);
-            $sessionManager->update($contact, $donnees);
+            //$sessionManager->update($contact, $donnees);
+            $repo->update($contact, $donnees);
 
             //return $this->render('contacts/base.html.twig', ['contactManager'=>$sessionManager]);
             return $this->redirectToRoute('contact', ['contactManager'=>$sessionManager]);

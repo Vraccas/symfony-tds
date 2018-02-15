@@ -16,13 +16,11 @@ class ContactRepository extends ServiceEntityRepository implements IModelManager
     }
 
     public function delete($indexes) {
-        
-        $keys=array_map(function ($index){return 'id='.$index;}, $indexes);
-        $keys=implode("0", $indexes);
-        $contacts=$this->findBy($indexes);
-        foreach($contacts as $contact){
-            $this->_em->remove($contact);
+        foreach($indexes as $key=>$index){
+            $obj = $this->find($index);
+            $this->_em->remove($obj);
         }
+        $this->_em->flush();
     }
 
     public function filterBy($keysAndValues) {
@@ -47,7 +45,13 @@ class ContactRepository extends ServiceEntityRepository implements IModelManager
     }
 
     public function update($object, $values) {
-        $this->update($object, $values);
+        $objectUpdate = $this->find($object->getId());
+        foreach($values as $key=>$value){
+            $setter='set'.ucfirst($key);
+            $objectUpdate->$setter($value);
+        }
+        $this->_em->persist($objectUpdate);
+        $this->_em->flush();
     }
 
     public function compter() {
