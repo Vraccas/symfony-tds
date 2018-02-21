@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+{%  block body %}
+    {{ q["btProjects"] | raw }} <!-- btnProjects est l'id du bouton qui va être créé, q est le tableau qui contrôle les composants créés. Raw est un filtre et permet d'afficher du HTML en l'interprétant-->
+    <div id="response" class="ui segment"></div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ script_foot | raw }}
+{% endblock %}
