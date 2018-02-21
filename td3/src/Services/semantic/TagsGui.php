@@ -4,6 +4,8 @@ namespace App\Services\semantic;
  
 use Ajax\php\symfony\JquerySemantic;
 use Ajax\semantic\html\elements\HtmlLabel;
+use App\Entity\Tag;
+use Ajax\semantic\html\base\constants\Color;
  
 class TagsGui extends JquerySemantic{
     

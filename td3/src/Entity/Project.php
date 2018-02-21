@@ -1,8 +1,9 @@
 <?php
 
 
-
+namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Project
@@ -57,7 +58,74 @@ class Project
      *   @ORM\JoinColumn(name="idOwner", referencedColumnName="id")
      * })
      */
-    private $idowner;
+    private $owner;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Story", mappedBy="project")
+     */
+    private $stories;
+     
+    public function __construct(){
+        $this->stories=new ArrayCollection();
+    }
+    
+    
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getDescriptif() {
+        return $this->descriptif;
+    }
+
+    public function getStartdate(): \DateTime {
+        return $this->startdate;
+    }
+
+    public function getDuedate(): \DateTime {
+        return $this->duedate;
+    }
+
+    public function getIdowner(): \Developer {
+        return $this->owner;
+    }
+
+    public function getStories(): \Story {
+        return $this->stories;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function setDescriptif($descriptif) {
+        $this->descriptif = $descriptif;
+    }
+
+    public function setStartdate(\DateTime $startdate) {
+        $this->startdate = $startdate;
+    }
+
+    public function setDuedate(\DateTime $duedate) {
+        $this->duedate = $duedate;
+    }
+
+    public function setIdowner(\Developer $idowner) {
+        $this->owner = $idowner;
+    }
+
+    public function setStories(\Story $stories) {
+        $this->stories = $stories;
+    }
+
 
 
 }

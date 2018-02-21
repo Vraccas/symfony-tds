@@ -1,7 +1,7 @@
 <?php
 
 
-
+namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -68,6 +68,63 @@ class Story
      * })
      */
     private $idproject;
+
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getCode() {
+        return $this->code;
+    }
+
+    public function getDescriptif() {
+        return $this->descriptif;
+    }
+
+    public function getTags() {
+        return $this->tags;
+    }
+
+    public function getStep() {
+        return $this->step;
+    }
+
+    public function getIddeveloper(): \Developer {
+        return $this->iddeveloper;
+    }
+
+    public function getIdproject(): \Project {
+        return $this->idproject;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setCode($code) {
+        $this->code = $code;
+    }
+
+    public function setDescriptif($descriptif) {
+        $this->descriptif = $descriptif;
+    }
+
+    public function setTags($tags) {
+        $this->tags = $tags;
+    }
+
+    public function setStep($step) {
+        $this->step = $step;
+    }
+
+    public function setIddeveloper(\Developer $iddeveloper) {
+        $this->iddeveloper = $iddeveloper;
+    }
+
+    public function setIdproject(\Project $idproject) {
+        $this->idproject = $idproject;
+    }
 
 
 }

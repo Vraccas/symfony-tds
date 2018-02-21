@@ -8,7 +8,7 @@ class ProjectsGui extends JquerySemantic{
     public function button(){
         $bt=$this->semantic()->htmlButton("btProjects","Projets","orange");
         $bt->getOnClick($this->getUrl("/projects"),"#response",["attr"=>""]);
-        return $bt;
+        return $bt;//Ici, fondamentalement, le boutton ne sert à rien au fonctionnement du truc, c'est pour ça qu'on ne retourne rien dans la méthode buttons
     }
     
     public function buttons(){

@@ -15,7 +15,7 @@ class ProjectsController extends Controller{
      * @Route("/index", name="index")
      */
     public function index(ProjectsGui $gui){
-        $gui->button();
+        $gui->buttons();
         return $gui->renderView('Projects/index.html.twig');
         //renderView est la fonction qui gère automatiquement les composants visuels et JQuery
     }

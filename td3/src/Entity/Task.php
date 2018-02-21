@@ -1,7 +1,7 @@
 <?php
 
 
-
+namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,6 +37,31 @@ class Task
      * })
      */
     private $idstory;
+
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getContent() {
+        return $this->content;
+    }
+
+    public function getIdstory(): \Story {
+        return $this->idstory;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setContent($content) {
+        $this->content = $content;
+    }
+
+    public function setIdstory(\Story $idstory) {
+        $this->idstory = $idstory;
+    }
 
 
 }

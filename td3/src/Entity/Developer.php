@@ -1,7 +1,7 @@
 <?php
 
 
-
+namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,5 +28,20 @@ class Developer
      */
     private $identity;
 
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getIdentity() {
+        return $this->identity;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setIdentity($identity) {
+        $this->identity = $identity;
+    }
 
 }
