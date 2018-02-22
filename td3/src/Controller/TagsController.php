@@ -19,7 +19,7 @@ class TagsController extends Controller{
         $tags=$tagRepo->findAll();
         $dt=$gui->dataTable($tags);
      //   return new Response($dt);
-        return $gui->renderView("Tags/frm.html.twig");
+        return $gui->renderView("Tags/index.html.twig");
     }
     
     /**
