@@ -41,10 +41,20 @@ class DevelopersController extends Controller{
     
     /**
      * @Route("developer/delete/{id}", name="developer_delete")
+     * @param App\Entity\Developer $dev developer to delete
+     * @param App\Repository\DevelopersRepository $repo repoitory to use
      */
     public function delete(Developer $dev, DevelopersRepository $repo){
         $repo->delete($dev->getId());
-        $this->redirectToRoute("/developers");
+        return $this->renderView("Developers/frm.html.twig");
+        //return $this->forward("App\Controller\DevelopersController::index");
+    }
+    
+    /**
+     * @Route("/testsDe", name="testsDe")
+     */
+    public function actionTest(){
+        return $this->redirectToRoute("developers");
     }
     
     /**
