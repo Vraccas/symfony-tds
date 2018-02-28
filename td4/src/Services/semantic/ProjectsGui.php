@@ -12,9 +12,10 @@ class ProjectsGui extends JquerySemantic{
     }
     
     public function buttons(){
-        $bts=$this->_semantic->htmlButtonGroups("bts",["Projects","Tags"]);
-        $bts->addIcons(["folder","tags"]);
-        $bts->setPropertyValues("data-url", ["projects","tags"]);
+        $bts=$this->_semantic->htmlButtonGroups("bts",["Projects","Tags", "Developers"]);
+        $bts->addIcons(["folder","tags", "folder"]);
+        $bts->setPropertyValues("data-url", ["projects","tags", "developers"]); //les valeurs dans le tableau correspondent aux noms des routes auxquelles on souhaite acceder
+        //Values in the array above are linked to the route's name we want to access
         $bts->getOnClick("","#response",["attr"=>"data-url"]);
     }
 }
