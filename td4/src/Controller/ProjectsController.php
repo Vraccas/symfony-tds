@@ -36,5 +36,13 @@ class ProjectsController extends Controller{
         $projects=$projectRepo->findAll();
         return $this->render('Projects/all.html.twig',["projects"=>$projects]);
     }
+    
+ 
+    /**
+     * @Route("/projects/new", name="project_new")
+     */
+    public function actionNew(\App\Repository\ProjectRepository $repo){
+        
+    }
 }
 

@@ -40,7 +40,9 @@ class TagsController extends Controller{
             $tag->setColor($request->get("color"));
             $tagRepo->update($tag);
         }
-        return $this->forward("App\Controller\TagsController::tags");
+        //Attention : le forward attend un nom de méthode et non pas une route !
+        //Warning : method forward expects a method's name and not a route !
+        return $this->forward("App\Controller\TagsController::index");
     }
 } 
 

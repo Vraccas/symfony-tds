@@ -25,4 +25,23 @@ class DevelopersController extends Controller{
         $devs = $repo->getAll();
         return $this->render('Developers/index.html.twig', ['devs'=>$devs]);
     }
+    
+    /**
+     * @Route("developer/update/{id}", name="developer_update")
+     */
+    public function update(){
+        
+    }
+    
+    /**
+     * @Route("/developers", name="developers")
+     */
+    public function all(DevelopersRepository $repo){
+        $devs = $repo->getAll();
+        return $this->render('Developers/all.html.twig', ['devs'=>$devs]);
+    }
+    
+    public function actionNew(DevelopersRepository $repo){
+        
+    }
 }
