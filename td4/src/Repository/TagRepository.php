@@ -17,4 +17,29 @@ class TagRepository extends ServiceEntityRepository
         $this->_em->persist($tag);
         $this->_em->flush();
     }
+
+    public function compter() {
+        
+    }
+
+    public function delete($index) {
+        
+    }
+
+    public function filterBy($keysAndValues) {
+        
+    }
+
+    public function get($index) {
+        
+    }
+
+    public function getAll() {
+        
+    }
+
+    public function insert($object) {
+        
+    }
+
 }

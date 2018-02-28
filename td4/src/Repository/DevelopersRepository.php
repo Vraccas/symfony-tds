@@ -16,7 +16,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  *
  * @author Yves
  */
-class DevelopersRepository extends ServiceEntityRepository implements IModelManager{
+class DevelopersRepository extends ServiceEntityRepository{
     
     public function __construct(RegistryInterface $registry){
         parent::__construct($registry, Developer::class);
@@ -27,7 +27,7 @@ class DevelopersRepository extends ServiceEntityRepository implements IModelMana
      * @param integer $index
      */
     public function delete($index) {
-        $obj = $this->findBy(['id'=>$index]);
+        $obj = $this->findOneBy(['id'=>$index]);
         $this->_em->remove($obj);
         $this->_em->flush();
     }
@@ -71,7 +71,7 @@ class DevelopersRepository extends ServiceEntityRepository implements IModelMana
      * @param App\Entity\Developer $object
      * @param array $values
      */
-    public function update($object, $values) {
+    /*public function update($object, $values) {
         //Attaching, in case it wasn't already, the object with the database
         $objectToUpdate = $this->findBy(['id'=>$object->getId()]);
         foreach($values as $key=>$value){
@@ -79,6 +79,11 @@ class DevelopersRepository extends ServiceEntityRepository implements IModelMana
             $objectToUpdate->$set($value);
         }
         $this->_em->persist($objectToUpdate);
+        $this->_em->flush();
+    }*/
+    
+    public function update($object){
+        $this->_em->persist($object);
         $this->_em->flush();
     }
 

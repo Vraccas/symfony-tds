@@ -1,4 +1,3 @@
-<h1>List of all developers registered in the database : </h1>
-{% for dev in devs %}
-    <p>{{dev.identity}}</p>
-{% endfor %}
+<div id="update-dev"></div>
+{{ q["dtDevelopers"] | raw }}
+{{ script_foot | raw }}

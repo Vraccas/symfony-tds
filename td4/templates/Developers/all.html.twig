@@ -1,0 +1,13 @@
+<h1>List of all the developers registered in the database</h1>
+
+<div class="ui inverted segment">
+    <div class="ui inverted relaxed divided list">
+    {% for dev in devs %}
+        <div class="item">
+            <div class="content">
+            <div class="header">{{ dev.identity }}</div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
