@@ -21,6 +21,13 @@ use Ajax\php\symfony\JquerySemantic;
  */
 class DevelopersGui extends JquerySemantic{
     
+    
+    public function btnCreate(){
+        $bt=$this->semantic()->htmlButton("btAddDevelopers","Add a new developer","blue");
+        $bt->getOnClick($this->getUrl("developer/new"),"#devCreation",["attr"=>""]);
+        return $bt;
+    }
+    
     public function dataTable($developers){
         $dt=$this->_semantic->dataTable("dtDevelopers", "App\Entity\Developer", $developers); //un dataTable est juste un composant HTML très avancé
         $dt->setFields(["dev"]);

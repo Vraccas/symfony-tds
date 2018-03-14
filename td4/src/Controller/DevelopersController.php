@@ -27,6 +27,7 @@ class DevelopersController extends Controller{
         /*$devs = $repo->getAll();
         return $this->render('Developers/index.html.twig', ['devs'=>$devs]);*/
         $devs=$repo->findAll();
+        $gui->btnCreate();
         $dt=$gui->dataTable($devs);
         return $gui->renderView("Developers/index.html.twig");
     }
@@ -66,8 +67,13 @@ class DevelopersController extends Controller{
         return $this->render('Developers/all.html.twig', ['devs'=>$devs]);
     }
     
-    public function actionNew(DevelopersRepository $repo){
-        
+    /**
+     * @Route("developer/new", name="developer_new")
+     */
+    public function actionNew(DevelopersGui $gui){
+        $dev = new Developer();
+        $gui->frm($dev);
+        return $gui->renderView("Developers/frm.html.twig");
     }
     
     /**
