@@ -46,7 +46,8 @@ class DevelopersController extends Controller{
      */
     public function delete(Developer $dev, DevelopersRepository $repo){
         $repo->delete($dev->getId());
-        return $this->renderView("Developers/frm.html.twig");
+        return $this->redirectToRoute("developers");
+        //return $this->renderView("Developers/frm.html.twig");
         //return $this->forward("App\Controller\DevelopersController::index");
     }
     
