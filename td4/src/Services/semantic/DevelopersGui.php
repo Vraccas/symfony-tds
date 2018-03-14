@@ -55,7 +55,7 @@ class DevelopersGui extends JquerySemantic{
         $frm->fieldAsInput("identity",["rules"=>["empty","maxLength[60]"]]);
         $frm->setValidationParams(["on"=>"blur","inline"=>true]);
         $frm->onSuccess("$('#frm-dev').hide();");
-        $frm->fieldAsSubmit("submit","positive","developer/submit", "#dtDevelopers",["ajax"=>["attr"=>"","jqueryDone"=>"replaceWith"]]);
+        $frm->fieldAsSubmit("submit","positive","developer/submit", "#dev-container",["ajax"=>["attr"=>"","jqueryDone"=>"replaceWith"]]);
         $frm->fieldAsLink("cancel",["class"=>"ui button cancel"]);
         $this->click(".cancel","$('#frm-dev').hide();");
         $frm->addSeparatorAfter("identity");

@@ -2,11 +2,12 @@
 
 <br>
 {%  block body %}
-    {{ q["btAddDevelopers"] | raw }}
+    
     <div id="response" class="ui segment"></div>
 {% endblock %}
 <div id="update-dev"></div>
 <div id="dev-container">
+    {{ q["btAddDevelopers"] | raw }}
     {{ q["dtDevelopers"] | raw }}
 </div>
 {{ script_foot | raw }}
