@@ -95,4 +95,5 @@ class DevelopersRepository extends ServiceEntityRepository{
         $objs = $this->getAll();
         return sizeof($objs);
     }
+    
 }

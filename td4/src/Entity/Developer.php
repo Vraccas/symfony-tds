@@ -27,7 +27,12 @@ class Developer
      * @ORM\Column(name="identity", type="string", length=60, nullable=false)
      */
     private $identity;
-
+    
+    public function __construct($_id=null, $_identity=null){
+        $this->id=$_id;
+        $this->identity=$_identity;
+    }
+    
     public function getId() {
         return $this->id;
     }

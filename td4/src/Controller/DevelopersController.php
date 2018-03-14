@@ -86,6 +86,10 @@ class DevelopersController extends Controller{
             //$dev->setColor($request->get("color"));
             $repo->update($dev);
         }
+        if($dev==null){
+            $developpeur = new Developer(-1, $request->get("identity"));
+            $repo->insert($developpeur);
+        }
         //Attention : le forward attend un nom de méthode et non pas une route !
         //Warning : method forward expects a method's name and not a route !
         return $this->forward("App\Controller\DevelopersController::index");
