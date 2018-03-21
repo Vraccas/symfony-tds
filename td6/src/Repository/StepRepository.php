@@ -7,6 +7,6 @@ use App\Entity\Step;
 
 class StepRepository extends MainRepository{
     public function __construct(RegistryInterface $registry){
-        parent::__construct($registry, Tag::class);
+        parent::__construct($registry, Step::class);
     }
 }

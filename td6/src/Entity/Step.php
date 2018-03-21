@@ -43,6 +43,10 @@ class Step
     public function setTitle($title) {
         $this->title = $title;
     }
+    
+    public function __toString() {
+        return $this->title;
+    }
 
 
     
