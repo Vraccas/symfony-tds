@@ -33,11 +33,11 @@ class TagsGui extends SemanticGui{
 	public function dataForm($tag,$type,$di=null){
                 $colors=Color::getConstants();
 		$df=$this->_semantic->dataForm("frm-".$type,$tag);
-		$df->setFields(["title\n","id\n", "color"]);
-		$df->setCaptions(["Title","","Color"]);
+		$df->setFields(["title\n", "title", "id\n", "color"]);
+		$df->setCaptions(["Modification", "Title","","Color"]);
                 $df->fieldAsDropDown("color",\array_combine($colors,$colors));
 		$df->fieldAsMessage(0,["icon"=>"info circle"]);
-		$df->fieldAsHidden(1);
+		$df->fieldAsHidden(2);
 		$df->fieldAsInput("title",["rules"=>"empty"]);
 		$df->setValidationParams(["on"=>"blur","inline"=>true]);
 		$df->setSubmitParams("tags/update","#frm",["attr"=>"","hasLoader"=>false]);

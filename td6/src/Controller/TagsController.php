@@ -14,7 +14,7 @@ class TagsController extends CrudController{
 		$this->repository=$repo;
 		$this->type="tags";
 		$this->subHeader="Tag list";
-		$this->icon="users";
+		$this->icon="tag";
 	}
     /**
      * @Route("/tags", name="tags")
