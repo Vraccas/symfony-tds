@@ -45,7 +45,7 @@ class TagsController extends CrudController{
     }
 
     /**
-     * @Route("/tags/update", name="tagss_update")
+     * @Route("/tags/update", name="tags_update")
      */
     public function update(Request $request){
     	return $this->_update($request, "\App\Entity\Tag");

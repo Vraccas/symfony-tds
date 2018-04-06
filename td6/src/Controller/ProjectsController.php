@@ -87,7 +87,7 @@ class ProjectsController extends CrudController{
     	return $this->render('projects/td3/all.html.twig',["projects"=>$projects]);
     }
     
-    protected function _setValues($instance, Request $request){
+    protected function _setValues($instance, Request $request){ //modifies the object according to what is given by the Request (called after validation of a form)
     	parent::_setValues($instance, $request);
     	$entityManager = $this->getDoctrine()->getManager();
     	$devRepo=$entityManager->getRepository("\App\Entity\Developer");
@@ -98,12 +98,21 @@ class ProjectsController extends CrudController{
     }
     
     /**
-     * @Route("/project/{idProject}", name="project_stories")
+     * @Route("/project/{idProject}", name="project_stories", requirements={"idProject"="\d+"})
      */
-    public function stories($idProject,TagRepository $tagRepo){
-    	$project=$this->repository->get($idProject);
+    public function stories($idProject, TagRepository $tagRepo){
+    	$project=$this->repository->get(1);
+        //die(var_dump($this->repository));
     	$this->gui->getOnClick(".nav-stories", "","#block-body",["attr"=>"data-ajax"]);
     	$this->gui->listStories($project->getStories(),$tagRepo);
     	return $this->gui->renderView("projects/stories.html.twig",["project"=>$project]);
     }
+    
+    /**
+     * @Route("project/{idProject}/addStory", name="projet_create_story")
+     */
+    public function addStoryInProject($idProject=1){
+        die('   Oh');
+    }
+    
 }

@@ -2,11 +2,13 @@
   <i class="folder open icon"></i>
   <div class="content">
     {{ project.name }}
+    <br>
+    Owned by : {{ project.getOwner.identity }}
     <div class="sub header"></div>
   </div>
 </h2>
 <h3 class="ui header">Stories</h3>
-<a href="#" id="add-story-bt" class="ui button nav-stories" data-ajax="project/addStory">
+<a href=" {{ path('projet_create_story', { 'idProject': project.id })}} " id="add-story-bt" class="ui button nav-stories" data-ajax="/project/{{project.id}}/addStory"> <!-- path must take the NAME of the route-->
 	<i class="ui plus icon"></i>
 	Add Story in project...
 </a>

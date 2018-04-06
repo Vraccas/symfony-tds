@@ -37,7 +37,16 @@ class Task
      * })
      */
     private $story;
-	/**
+    
+        public  function getId() {
+            return $this->id;
+        }
+
+        public function setId($id) {
+            $this->id = $id;
+        }
+
+    	/**
 	 * @return string
 	 */
 	public function getContent() {
@@ -64,6 +73,10 @@ class Task
 	public function setContent($content) {
 		$this->content = $content;
 	}
+        
+        public function __toString() {
+            return $this->getContent();
+        }
 
 
 

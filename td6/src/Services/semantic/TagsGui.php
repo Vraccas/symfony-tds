@@ -30,7 +30,7 @@ class TagsGui extends SemanticGui{
 		return $dt;
 	}
 	
-	public function dataForm($tag,$type,$di=null){
+	public function dataForm($tag,$type){
                 $colors=Color::getConstants();
 		$df=$this->_semantic->dataForm("frm-".$type,$tag);
 		$df->setFields(["title\n", "title", "id\n", "color"]);

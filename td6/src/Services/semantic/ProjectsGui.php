@@ -57,6 +57,7 @@ class ProjectsGui extends SemanticGui{
 	
 	public function dataForm($project,$type,$di=null){
 		$df=$this->_semantic->dataForm("frm-".$type,$project);
+                $project->idOwner = '';
 		if($project->getOwner()!=null){
 			$project->idOwner=$project->getOwner()->getId();
 		}
@@ -68,13 +69,13 @@ class ProjectsGui extends SemanticGui{
 		$df->fieldAsTextarea(3);
 		$df->setValueFunction(4,function($d){if($d==null)$d=new \DateTime(); return new HtmlInput("startDate","date",$d->format("Y-m-d"));});
 		$df->setValueFunction(5,function($d){if($d==null)$d=new \DateTime(); return new HtmlInput("dueDate","date",$d->format("Y-m-d"));});
-		$df->fieldAsDropDown(6,JArray::modelArray($di,"getId","getIdentity"));
+		$df->fieldAsDropDown(6,JArray::modelArray($di,"getId","getIdentity")); //$di is a list of Developer entity
 		$df->setValidationParams(["on"=>"blur","inline"=>true]);
 		$df->setSubmitParams("projects/update","#frm",["attr"=>"","hasLoader"=>false]);
 		return $df;
 	}
 	
-	public function listStories($stories,TagRepository $tagRepo){
+	public function listStories($stories, TagRepository $tagRepo){
 		$list=$this->_semantic->htmlList("list-stories");
 		$list->fromDatabaseObjects($stories, function(Story $story) use($tagRepo){
 			$item=new HtmlListItem("list-story-".$story->getId(),["icon"=>"file big","header"=>$story->getCode(),"description"=>$story->getDescriptif()]);

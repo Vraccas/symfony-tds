@@ -173,6 +173,6 @@ class Story
 	}
 
 	public function __toString(){
-    	return $this->descriptif;
-    }
+            return $this->descriptif;
+        }
 }
